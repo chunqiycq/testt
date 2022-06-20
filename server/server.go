@@ -29,11 +29,16 @@ Request：从客户端读取到的数据内容
 */
 func myHandlerFunc(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("需要4Test需要2Test"))
-	fmt.Println("Header：", r.Header)
-	fmt.Println("URL：", r.URL)
-	fmt.Println("Method：", r.Method)
-	fmt.Println("Host：", r.Host)
-	fmt.Println("RemoteAddr：", r.RemoteAddr)
+	//fmt.Println("Header：", r.Header)
+	//fmt.Println("URL：", r.URL)
+	//fmt.Println("Method：", r.Method)
+	//fmt.Println("Host：", r.Host)
+	//fmt.Println("RemoteAddr：", r.RemoteAddr)
+
+	//fmt.Println("报文内容", r)
+	lenth := r.ContentLength
+	body := make([]byte, lenth)
+	r.Body.Read(body)
+	fmt.Println("Body：", body)
 	fmt.Println("Body：", r.Body)
-	fmt.Println("报文内容", r)
 }

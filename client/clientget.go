@@ -17,7 +17,7 @@ func clientaddget(name, code string) {
 	fmt.Println("客户端成功连接服务器")
 	// 模拟浏览器
 	//fmt.Println("姓名密码：", "姓名密码：", name, code)
-	requstHttpHeader := "GET /chunqi HTTP/1.1\r\nHost:127.0.0.1:8060\r\n\r\n\n{name}" //声明并且赋值
+	requstHttpHeader := "POST /chunqi?nameyangc HTTP/1.1\r\nHost:127.0.0.1:8060\r\nContent-Type:application/x-www-form-urlencoded\r\nContent-Length: 125\r\n\r\n吕大强" //声明并且赋值
 	fmt.Println(requstHttpHeader)
 
 	// 给服务器发送请求报文
