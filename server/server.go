@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/http"
 )
 
@@ -27,18 +28,37 @@ func main() {
 ResponseWriter：写给客户端的数据内容
 Request：从客户端读取到的数据内容
 */
+
 func myHandlerFunc(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("需要4Test需要2Test"))
+
 	//fmt.Println("Header：", r.Header)
 	//fmt.Println("URL：", r.URL)
 	//fmt.Println("Method：", r.Method)
 	//fmt.Println("Host：", r.Host)
 	//fmt.Println("RemoteAddr：", r.RemoteAddr)
-
 	//fmt.Println("报文内容", r)
-	lenth := r.ContentLength
-	body := make([]byte, lenth)
-	r.Body.Read(body)
-	fmt.Println("Body：", body)
-	fmt.Println("Body：", r.Body)
+	s, _ := ioutil.ReadAll(r.Body) //把	body 内容读入字符串 s
+	inrequire := string(s)
+	fmt.Println(inrequire) //在返回页面中显示内容。
+	opera := toencoding(inrequire)
+	result := operamysql(opera)
+	rec := tojson(result)
+	w.Write([]byte(rec)) //这是响应
+	//fmt.Println(opera)
+	//fmt.Println(opera.Name)
+	//operatojson := tojson(opera)
+	//fmt.Println(operatojson)
+	//fmt.Println(inrequire) //在返回页面中显示内容。
+	//rec := toencoding(string(s))
+	//fmt.Println("json:", string(s))
+	//fmt.Println("json2:", rec)
+	//ress := tojson(rec)
+	//fmt.Println("json3:", ress)
+
+	//lenth := r.ContentLength
+	//body := make([]byte, lenth)
+	//r.Body.Read(body)
+	//inrequire := bytes.NewBuffer([]byte(body)) //获取的post请求
+	//fmt.Println("Body:", inrequire)
+	//
 }
