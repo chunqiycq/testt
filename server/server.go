@@ -42,7 +42,7 @@ func myHandlerFunc(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(inrequire) //在返回页面中显示内容。
 	opera := toencoding(inrequire)
 	result := operamysql(opera)
-	rec := tojson(result)
+	rec := mtojson(result)
 	w.Write([]byte(rec)) //这是响应
 	//fmt.Println(opera)
 	//fmt.Println(opera.Name)

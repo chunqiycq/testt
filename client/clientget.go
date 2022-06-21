@@ -14,7 +14,7 @@ type userInfo struct {
 	Code string
 }
 
-func clientaddget(opera client) {
+func clientaddget(opera client) (result []manage) {
 	// 客户端连接服务器
 	dial, err := net.Dial("tcp", "127.0.0.1:8060") //网络连接函数,tcp连接
 
@@ -37,10 +37,11 @@ func clientaddget(opera client) {
 	if err2 != nil {
 		fmt.Println("请求报文出错", err2)
 	}
-	result, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(result))
-
+	res, _ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(res))
+	result = toencodingm(string(res))
 	fmt.Println("连接服务器222")
+	return
 }
 
 func errFunction(describe string, err error) {

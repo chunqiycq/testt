@@ -10,7 +10,7 @@ import (
 
 var GlobalConn *gorm.DB
 
-func operamysql(opera client) (result client) {
+func operamysql(opera client) (result []manage) {
 	//初始化
 	//var err error
 	//db, err = gorm.Open("mysql", "root:021541@tcp(127.0.0.1:3306)/sms?charset=utf8&parseTime=True&loc=Local")
@@ -111,7 +111,8 @@ func operamysql(opera client) (result client) {
 		if flag == 2 {
 			fmt.Println("查询出错")
 		}
+		result = mage
 	}
-	result = opera
+
 	return
 }

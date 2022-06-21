@@ -8,6 +8,7 @@ import (
 var opera client
 
 func operate() {
+	//选择输入功
 	var model int
 	fmt.Println("输入操作的功能：")
 	//	fmt.Scan(&model)
@@ -17,8 +18,10 @@ func operate() {
 		var Inname, Incode = input()
 		opera.Nameo = Inname
 		opera.Code = Incode
-		opera.Flagnum = 1
-		clientaddget(opera)
+		opera.Page = 1
+		opera.Flagnum = 5
+		result := clientaddget(opera)
+		fmt.Println(result)
 	}
 }
 

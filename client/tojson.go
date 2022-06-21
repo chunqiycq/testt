@@ -30,7 +30,14 @@ func tojson(p1 client) (rec string) {
 	return
 }
 
-func toencoding(str string) (rec client) {
+func toencodingc(str string) (rec client) {
+	//反序列话
+	json.Unmarshal([]byte(str), &rec) //传指针是为了能在函数内部修改p2
+	//fmt.Printf("%#v\n", rec)
+	return
+}
+
+func toencodingm(str string) (rec []manage) {
 	//反序列话
 	json.Unmarshal([]byte(str), &rec) //传指针是为了能在函数内部修改p2
 	//fmt.Printf("%#v\n", rec)

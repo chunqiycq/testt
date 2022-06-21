@@ -18,7 +18,19 @@ type client struct {
 	Flag    int    `json:"flag"`
 }
 
-func tojson(p1 client) (rec string) {
+func mtojson(p1 []manage) (rec string) {
+	//将p1转json
+	b, err := json.Marshal(p1) //序列号
+	if err != nil {
+		//	fmt.Printf("marshal fail,err:%v", err)
+		return
+	}
+	rec = string(b)
+	fmt.Printf(string(b), err)
+	return
+}
+
+func ctojson(p1 client) (rec string) {
 	//将p1转json
 	b, err := json.Marshal(p1) //序列号
 	if err != nil {
